@@ -1,0 +1,33 @@
+.product-container {
+    padding: 20px 10px ;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+  .products {
+    padding: 20px 30px;
+    display: flex;
+  }
+  .filter-container {
+    flex: 1;
+    margin-top: 10px;
+    position: sticky;
+    height: 100%;
+    top: 50px;
+    bottom: 100px;
+  }
+  .list-container {
+    flex: 3;
+  }
+  .filterItem {
+    margin-bottom: 30px;
+  }
+  .filterItem h2 {
+    margin-bottom: 20px;
+  }
+  .inputItem {
+    margin-bottom: 10px;
+  }
+  .inputItem label, .inputItem span {
+    margin-left: 5px;
+   }

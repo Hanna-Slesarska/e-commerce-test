@@ -1,0 +1,40 @@
+.footer-container {
+    display: flex;
+  }
+  .footer-left, .footer-center, .footer-right {
+    flex: 1;
+    padding: 15px;
+  }
+  .footer-left {
+    display: flex;
+    flex-direction: column;
+    
+  }
+  .footer-left-title {
+    font-size: 50px;
+  }
+  .social-container {
+    display: flex;
+  }
+  .social-icon {
+    margin: 10px;
+  }
+  .footer-desc {
+    margin: 15px 0px;
+  }
+  
+  .footer-title {
+    margin-bottom: 15px;
+  }
+  .footer-list {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+  .footer-listItem {
+    margin: 5px 0;
+  }
+  .payment {
+    width: 50%;
+    margin-top: 10px;
+  }
