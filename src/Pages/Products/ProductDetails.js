@@ -31,9 +31,9 @@ const ProductDetails = () => {
                         <img className="prod-img" src={`./${product.id}.png`} alt="product"/> 
                     </div>
                     <div className="product-info-cont">
-                        <h2 className="product-title">{product.idname}</h2>
-                        <p className="product-desc">{product.iddesc}</p>
-                        <span className="product-price">${product.idprice}</span>
+                        <h2 className="product-title">{product.name}</h2>
+                        <p className="product-desc">{product.desc}</p>
+                        <span className="product-price">${product.price}</span>
                         <div className="sort-container">
                             <div className="sort">
                                 <p className="sort-title">Color:</p>
