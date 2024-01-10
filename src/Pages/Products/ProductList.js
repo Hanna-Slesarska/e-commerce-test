@@ -1,45 +1,62 @@
-import AllCategories from "../../Components/Filter/AllCategories"
-import Footer from '../../Components/Footer/Footer';
-import Newsletter from '../../Components/Newsletter/Newsletter';
+
 import './products.css';
-import { FaRegHeart } from "react-icons/fa";
 import { popularProducts } from "../../Data/data";
 import {Link } from 'react-router-dom';
-//import ProductDetails from '../../Pages/Products/ProductDetails';
+//import Product from './Product';
+import { useSelector } from "react-redux";
+import { getSelectedCategory } from "../../Redux/productsSlice";
+import { FaRegHeart } from "react-icons/fa";
+import ProductDetails from './ProductDetails';
+
+
 
 
 const ProductList = () => {
-    return(
-        <div>
-            <div className="products">
-                <div className="filter-container">
-                    <AllCategories/>
-                </div>
-                <div className='product-container'>
-                {popularProducts.map(product => (
-                    <Link to={`/product/:id`}>
-                    <div className="single-product-container" key={product.id}>
-                    <div className="circle"></div>
-                    <img className="product-img" src={`./${product.img}.png`}  alt="product"/>
-                    <div className="product-info">
-                        <div className="product-details">
-                            <p>{product.name}</p>
-                            <p>${product.price}</p>
-                        </div>
-                        <div className="icon">
-                            <FaRegHeart />
-                        </div>
-                    </div>
-                </div>
-                </Link>
-                
-            ))} 
+    const selectedCategory = useSelector(getSelectedCategory);
+    return (
+        <div className="product-test">
             
-                </div>
-            </div>
-            <Newsletter />
-            <Footer />
+           {popularProducts.filter(product => {
+                
+                if (selectedCategory === 'View all') return true;
+                return selectedCategory === product.category;
+           }).map(product => (<Link  to={`/shop/${product.title}`}>
+            <>
+            <ProductDetails product={product} key={product.id}/>
+           
+           <div className="product-list"  >
+                            
+                                <div className="single-product-container" >
+                                    <div className="circle"></div>
+                                        <img className="product-img" src={`./${product.img}.png`}  alt="product"/>
+                                    <div className="product-info">
+                                        <div className="product-details">
+                                            <p>{product.name}</p>
+                                            <p>${product.price}</p>
+                                        </div>
+                                        <div className="icon">
+                                            <FaRegHeart />
+                                        </div>
+                                    </div> 
+                                </div> 
+                               
+                                {/* <Product product={product}/> */}
+                            
+                         </div> 
+            </>
+ </Link> 
+            )
+           
+           )
+ 
+          } 
+                        
+             
+                       
+                    
         </div>
+                    
+    
     )
 }
 export default ProductList;

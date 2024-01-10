@@ -2,7 +2,7 @@ import { useState } from "react";
 import { MdOutlinePersonOutline, MdOutlineShoppingBag,  MdSearch, MdClose } from "react-icons/md";
 import { IoMdHeartEmpty } from "react-icons/io";
 import { useSelector } from 'react-redux';
-import { getTotalArticles } from '../../Redux/cartSlice';
+import { getTotalArticles } from '../../Redux/CartSlice';
 import Cart from "../Cart/Cart";
 import './navbar.css';
 

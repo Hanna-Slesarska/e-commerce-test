@@ -1,66 +1,61 @@
-import { styled } from "styled-components"
+
 import ChangeQuantity from "../../Components/Cart/ChangeQuantity";
 import { useState } from "react";
 import { popularProducts } from "../../Data/data";
+import { useParams, useNavigate } from "react-router-dom";
+import './products.css';
+// import Newsletter from "../../Components/Newsletter/Newsletter";
+// import Footer from "../../Components/Footer/Footer";
+import { MdArrowBackIosNew } from "react-icons/md";
+import { addToCart } from "../../Redux/CartSlice";
+import { useDispatch } from "react-redux";
 
 
 
-
-const SortColor = styled.div`
-width: 20px;
-height: 20px;
-border-radius: 50%;
-background-color: ${(props) => props.color};
-margin: 0px 5px;
-cursor: pointer;
-`
-
-const ProductDetails = () => {
+const ProductDetails = ({product}) => {
     const [quantity, setQuantity] = useState(1);
     
-    const product = popularProducts.filter(
-        (product) => product === product.id
-    );
     
+    const dispatch = useDispatch();
 
-    return(
-            <div className="product-container" >
-            
-                <div className="product-wrapper" >
-                    <div className="img-container">
-                        <img className="prod-img" src={`./${product.id}.png`} alt="product"/> 
+    const navigate = useNavigate();
+    const { title } = useParams();
+
+    return(<div>
+        {popularProducts.filter((product) => product.title === title).map(elem => {
+            return(
+                <div className="details-container" key={elem.id}>
+                    <div className="product-details-wrapper" >
+                        <div className="img-details-container">
+                            <img className="prod-details-img" src={`../${elem.img}.png`} alt="product"/> 
+                        </div>
+                        <div className="product-details-container">
+                            <h2 className="product-details-title">{elem.name}</h2>
+                            <p className="product-details-desc">{elem.desc}</p>
+                            <span className="product-details-price">${elem.price}</span>
+                            <div className="sort-container">
+                                <ChangeQuantity quantity={quantity} setQuantity={setQuantity} />
+                            </div>
+                            <div className="add-container">
+                                <button onClick={() => {dispatch(addToCart({elem, quantity}))}} className="add-cart-btn">ADD TO CART</button>
+                            </div>  
+                        </div>
+                        </div>
                     </div>
-                    <div className="product-info-cont">
-                        <h2 className="product-title">{product.name}</h2>
-                        <p className="product-desc">{product.desc}</p>
-                        <span className="product-price">${product.price}</span>
-                        <div className="sort-container">
-                            <div className="sort">
-                                <p className="sort-title">Color:</p>
-                                <SortColor color="black"/>
-                                <SortColor color="darkblue"/>
-                                <SortColor color="gray"/>
-                            </div>
-                            <div className="sort">
-                                <p className="sort-title">Size</p>
-                                <select>
-                                    <option>XS</option>
-                                    <option>S</option>
-                                    <option>M</option>
-                                    <option>L</option>
-                                    <option>XL</option>
-                                </select>
-                            </div>
                     
-                        </div>
-                        <div className="add-container">
-                            <ChangeQuantity quantity={quantity} setQuantity={setQuantity} /> 
-                            <button className="add-cart-btn">ADD TO CART</button>
-                        </div>
-                    </div>
-        </div>
+            )})
+        }
+
+
         
+         
+         
+        <button className="go-back" onClick={() => navigate(-1)}>
+            <MdArrowBackIosNew />  Back
+        </button>
+      
     </div>
+            
 
     )
 }

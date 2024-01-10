@@ -10,13 +10,16 @@ import Announcement from './Components/Announcement/Announcement';
 import Home from './Pages/Home';
 import Contact from './Pages/Contact';
 import About from './Pages/About';
-import ProductList from './Pages/Products/ProductList';
+import Shop from './Pages/Shop';
 import ProductDetails from './Pages/Products/ProductDetails';
 
 
 
 
-function App({product}) {
+
+
+function App() {
+  
   return (
     <div>
       <Announcement />
@@ -31,12 +34,12 @@ function App({product}) {
 
         <Routes>
           <Route path="/" element={<Home />}/>
-          <Route path="/shop/" element={<ProductList />}/> 
+          <Route path="/shop" element={<Shop />}/> 
           <Route path="/about" element={<About />}/>
           <Route path="/contact" element={<Contact />}/>
           <Route
-                   exact path="product/:id"
-                   element={<ProductDetails product={product}/>}
+                  path="/shop/:title"
+                  element={<ProductDetails />}
                 /> 
           
         </Routes>

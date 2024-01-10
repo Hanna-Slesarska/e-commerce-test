@@ -1,0 +1,39 @@
+.cat-title {
+    margin-bottom: 15px;
+}
+.filters {
+    position: relative;
+    overflow: hidden;
+}
+.categorySelected {
+    color: rgb(255, 33, 33);
+}
+.categoryButton {
+    margin-bottom: 10px;
+    cursor: pointer;
+    font-size: 18px;
+   
+}
+
+.categoryButton:hover {
+    color: rgb(255, 33, 33);
+}
+
+.categoryButton::before {
+   
+    content: "";
+    position: absolute;
+    width: 36%;
+    height: 2px;
+    top: 22px;
+    background-color: rgb(255, 33, 33);
+    transform: translate3d(-100%, 0, 0);
+    transition: transform 0.2s ease;
+  }
+
+.categoryButton:hover::before,
+.categoryButton:focus::before {
+    /*transform: scale(1);*/
+    transform: translate3d(0, 0, 0);
+  }
+
